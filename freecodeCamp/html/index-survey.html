@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Rosa Survey</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styleSurvey.css">
+</head>
+
+<body>
+  <div class="navButton"><input type="button" onclick="history.back()" value="Go Back" class="btn"></div>
+  <h1 id="title">How much do you love Matei?</h1>
+  <p id="description">Matei would like to know how much Rosa loves him. Please answer truthfully.</p>
+  <form id="survey-form" method="post" action='https://register-demo.freecodecamp.org'>
+    <fieldset>
+      <label id="name-label" for="name">Name: <input id="name" name="name" type="text" required
+          placeholder="Enter your name..." /></label>
+      <label id="email-label" for="email">Email: <input id="email" name="email" type="email" required
+          placeholder="Fake email address..." /></label>
+      <label id="number-label" for="number">Shoe size: <input id="number" type="number" name="number" min="10" max="120"
+          placeholder="38" /></label>
+    </fieldset>
+    <fieldset>
+      <label for="personal-account"><input id="personal-account" type="radio" name="account-type" class="inline"
+          value="1" checked/> I love him thiiiiis much!</label>
+      <label for="business-account"><input id="business-account" type="radio" name="account-type" class="inline"
+          value="2" /> I love him thiiiiiiiiiiiiiis much!</label>
+      <label for="terms-and-conditions"><input id="terms-and-conditions" type="checkbox" required
+          name="terms-and-conditions" class="inline" value="3" />I want to kiss him all the time!</label>
+      <label for="checkMe"><input id="checkMe" type="checkbox" required name="checkMe" class="inline" value="4" />And
+        hug him all night long!</label>
+    </fieldset>
+    <fieldset>
+      <label for="dropdown">How much do you love Matei?
+        <select id="dropdown" name="dropdown">
+          <option value="">(select one)</option>
+          <option value="1">To the Moon and back!</option>
+          <option value="2">I would give him a back massage every night!</option>
+          <option value="3">I would cook for him every day!</option>
+          <option value="4">All of the above</option>
+        </select>
+      </label>
+      <label for="bio">Tell me how much you love me in your own words:
+        <textarea id="bio" name="bio" rows="3" cols="30" placeholder="I love you so so much..."></textarea>
+      </label>
+    </fieldset>
+    <input class="submit" id="submit" type="submit" value="Submit" />
+  </form>
+  <p>Made for <a href="https://freecodecamp.org" target=_blank>freecodecamp.org</a> <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-survey-form-project/build-a-survey-form" target="_blank">submission</a></p>
+</body>
+
+</html>
