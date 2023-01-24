@@ -1,2 +1,3 @@
 # Matei-A.github.io
- My portfolio/blog
+Should be my portfolio. 
+At the moment, just dropping web dev stuff in it.
