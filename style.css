@@ -28,3 +28,7 @@ title.style {
     color: white;
     position: center;
 }
+
+.container{
+    display:flexbox;
+}
