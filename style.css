@@ -1,34 +1,52 @@
 body {
     background-color: rgb(34, 34, 34);
-    position: center;
-
-}
-
-.mainbody {
-    margin:auto;
-    text-align:center;
-    width:200px;
-    height:200px;
+    color: #fff;
+    text-align: center;
 }
 
 .btn {
+    width: 125px;
+    height: 50px;
     margin: auto;
-    padding: 25px;
-    font-size: 25px;
+    padding: 0px;
+    font-size: 20px;
+    background-color: #fff;
+
 }
 
-title {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: white;
-    position: center;
+
+.btn.cert {
+    background-color:#f5f2d1;
 }
 
-title.style {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: white;
-    position: center;
+.btn:hover {
+    background-color: #dddddd;
 }
 
-.container{
-    display:flexbox;
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+header {
+    text-transform: uppercase;
+    padding: 20px;
+    border-bottom: 2px solid white;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+    margin-top: 20px;
 }
