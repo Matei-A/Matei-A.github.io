@@ -27,10 +27,6 @@ body {
     background-color: #fff;
 }
 
-.btn.cert {
-    background-color:#f5f2d1;
-}
-
 .btn:hover {
     background-color: #dddddd;
 }
