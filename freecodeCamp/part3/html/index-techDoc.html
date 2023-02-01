@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tech doc</title>
+    <link rel="stylesheet" href="../styles/styleTechDoc.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>
+            Niagara Particles in Unreal Mobile
+        </header>
+        <a class="nav-link" href="#Before_you_read">
+            <p class="nav-link-p">Before you read </p>
+        </a>
+        <a class="nav-link" href="#About">
+            <p class="nav-link-p">About </p>
+        </a>
+        <a class="nav-link" href="#Setup">
+            <p class="nav-link-p">Setup </p>
+        </a>
+        <a class="nav-link" href="#Models">
+            <p class="nav-link-p">Models </p>
+        </a>
+        <a class="nav-link" href="#Code">
+            <p class="nav-link-p">Code </p>
+        </a>
+        <a class="nav-link" href="#Thanks">
+            <p class="nav-link-p">Thanks </p>
+        </a>
+    </nav>
+    <div class="navButton"><input type="button" onclick="window.location.href='../../../index.html';" value="Go Back" class="btn"></div>
+    <main id="main-doc">
+        <section class="main-section" id="Before_you_read">
+            <header>
+                Before you read
+            </header>
+            <p>
+                This page is made for <a href="https://www.freecodecamp.org/"
+                    target="_blank">freecodecamp.org</a>.</br>I actually
+                wanted to write something meaningful in
+                it,
+                but in the essence of time, I cut it short.
+                Really short. However, it did spark the idea in me of doing something like this more seriously.
+
+            </p>
+            <p class="small">
+                Note: I write this a long time after having looked at the project. If I say, I wrote this and it worked,
+                it might be that it did not work,
+                and in fact I had to write and change some more things until it worked. I'm saying this just in case
+                some actually wants to use this as a tutorial. (do not).
+            </p>
+        </section>
+        <section class="main-section" id="About">
+            <header>
+                About
+            </header>
+            <p>
+                A while ago I started playing around with UE5. I was looking into the Niagara Particle System, and what
+                one can do with them. It's super powerful,
+                and you can achieve really impressive things technically. I was following specifically the works of
+                <a href="http://asher.gg/" target="_blank">Asher Zhu</a>.
+            </p>
+            <p>It sparked the idea of trying to make a bullet hell. Interparticle collisions, if handled on the GPU, can
+                be very fast. I also wanted it to work on mobile.
+                And every important bit should be coded in C++, blueprints as little as possible. Just to practice my
+                programming skills.
+            </p>
+        </section>
+        <section class="main-section" id="Setup">
+            <header>
+                Setup
+            </header>
+            <p>
+                I started following the setup that Epic describes on their
+                <a href="https://docs.unrealengine.com/5.0/en-US/setting-up-unreal-engine-projects-for-android-development/"
+                    target="_blank">docs</a>.
+                Most notably, these steps were undertaken:
+                <li>Setup Android SDK and NDK for Unreal</li>
+                <li>Setup the phone for development</li>
+                <li>Setup the editor for Android</li>
+                <li>Configure the editor for mobile graphics</li>
+                <li>Test and launching on the device</li>
+                <li>Packaging and installing on the device</li>
+            </p>
+            <p>
+                It's good to note that things didn't go very smooth. For some reason, the phone was being discovered in
+                the Android Studio only if the USB was
+                connected in certain ports. And at some point, it stopped working all-togheter. I ended up buying a new
+                phone, which fixed the problem.
+                Not the usual solution, but my old OnePlus3 was being very finicky.
+            </p>
+        </section>
+        <section class="main-section" id="Models">
+            <header>
+                Models
+            </header>
+            <p>
+                I wanted my bullet-hell to be space-themed. So I found a free low-poly static mesh on the internet. I
+                got that and imported it.
+                Later, I would need to switch it for a skeletal mesh, but for the moment, a static one would do.
+                Any other graphics were at this point not important, as I just wanted to get the prototype going.
+            </p>
+        </section>
+        <section class="main-section" id="Code">
+            <header>
+                Code
+            </header>
+            <p>
+                I started playing around with different types of movement. I wasn't sure what was going to work for a
+                spaceship, so I tried multiple.
+                I started with a character, as it comes with a Movement Component. However, the collider coming with the
+                character was an issue. Also,
+                the character class is made for humanoids, walking upright, not for cylindrical shapes placed
+                horizontally.
+            </p>
+            <p>
+                I ended up coding my own pawn. I added a collider, setup the input, and I wanted to see it move. This is
+                what I came up with. Inside the tick,
+                I calculate the new direction vector.
+            </p>
+            <code>
+                FVector directionNormalized = MovementDirection.GetClampedToSize(0, 1);
+            </code>
+
+            <p>
+                And then I calculate the new location of the actor with this formula.
+            </p>
+            <code>
+                const FVector NewLocation = GetActorForwardVector() * directionNormalized.SizeSquared() * DeltaTime * MovementSpeed;
+            </code>
+            <p>
+                Set the new location and rotation, and voila, a moving actor.
+            </p>
+            <code>
+                AddActorWorldOffset(NewLocation, true, &hitResult);</br>
+                SetActorRotation(FMath::Lerp(GetActorRotation(), directionNormalized.Rotation(), 0.05f));
+             </code>
+            <p>
+                The lerp is there to make the rotation smoother.
+            </p>
+
+            <p>
+                Now onto particles!
+            </p>
+            <p>I was in for some disappointing news. I was really excited about the possibilities of Niagara particles,
+                take advantage of the GPUSim, and just go nuts with the numbers.
+                But for particle collisions, the GPUSim is not available. Only the CPUSim. This meant my big plans for
+                lots of bullets were dwindled.
+            </p>
+            <p>However, not all was lost. Niagara, even on CPU, it's pretty fast. And I also just wanted to see the
+                project up and running on mobile.</p>
+            <p>I setup a particle system and attached it to the ship. I also put down a cyllinder in the map, to test
+                the collisions.</p>
+            <p>The particle system blueprint setup has lots of small details, which all can be looked up online,
+                especially
+                <a href="https://docs.unrealengine.com/5.0/en-US/getting-started-in-niagara-effects-for-unreal-engine/"
+                    target="_blank">here</a>.
+                I might go in detail about them later, if I come back to this page, but for now, I'll skip to the last
+                juicy part.
+            </p>
+            <p>To get the collisions working, you need this function in your pawn.</p>
+            <code>
+    ReceiveParticleData_Implementation(const TArray<FBasicParticleData>& Data, UNiagaraSystem* NiagaraSystem, const FVector& SimulationPositionOffset)
+</code>
+            <p>Inside, this goes:</p>
+            <pre>
+<code>for (auto &particle : Data) 
+    { 
+        const FVector start = particle.Position; 
+        const FVector end = particle.Position + particle.Velocity * 0.05f; 
+        const float radius = particle.Size * 1.1f; 
+        
+        TArray<AActor*> ActorToIgnore; 
+        ActorToIgnore.Add(this); 
+        
+        FHitResult HitResult; 
+        
+        UKismetSystemLibrary::SphereTraceSingle(GetWorld(), start, end, radius, ETraceTypeQuery::TraceTypeQuery1, false, ActorToIgnore, EDrawDebugTrace::None, HitResult, true); 
+        
+        if (HitResult.HasValidHitObjectHandle()) 
+        { 
+            auto hitActor = HitResult.HitObjectHandle.FetchActor(); 
+            hitActor->TakeDamage(100, FDamageEvent(), GetController(), this); 
+        } 
+    }</code>
+            </pre>
+            <p>
+                That's the major points of this 1-day test I did. I increased the particle numbers (in the thousands I
+                think), and deployed to my mobile. It ran, it worked,
+                surprisingly well. Hopefully, I find the time to finish this project soon.
+            </p>
+        </section>
+        <section class="main-section" id="Thanks">
+            <header>
+                Thanks
+            </header>
+            <p>
+                Thanks for reading! I don't know how or why you found this, but cool! See ya!
+        </section>
+    </main>
+</body>
+
+</html>
