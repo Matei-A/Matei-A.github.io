@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="style.css">
-
-  <title>Index - WIP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../styles/stylePortfolio.css">
 </head>
 
 <body>
-  <div class="flex-wrapper">
+
     <header>
-      <h1>Web dev dump</h1>
+        <nav id="navbar" class="nav">
+            <ul class="nav-list">
+                <li>
+                    <a href="#welcome-section">About</a>
+                </li>
+                <li>
+                    <a href="#projects">Work</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <h2>Stuff From FreeCodeCamp</h2>
+
+    <section id="welcome-section">
+        <h1>Stuff From FreeCodeCamp</h1>
     <div class="content">
       <h2>Part 1</h2>
       <div class="container">
@@ -49,17 +64,26 @@
         <a href="freecodeCamp/part5/html/index-Penguin.html"><button class="btn">Penguin</button></a>
       </div>
     </div>
-  </div>
-  <footer>
-    <p>Made by Matei</p>
-    <div class="container">
-      <a href="https://github.com/Matei-A" target=_blank><img src="/resources/github-mark-white.png"
-          alt="Github Link"></a>
-      <a href="https://www.linkedin.com/in/matei-adeodatus/" target=_blank><img src="/resources/linkedIn.png"
-          alt="LinkedIn Link"></a>
-    </div>
-  </footer>
-  </div>
+    </section>
+
+    <section id="projects">
+        <div class="project-title">
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Made by Matei</p>
+        <div class="container">
+            <a href="https://github.com/Matei-A" target=_blank id="profile-link"><img
+                    src="/resources/github-mark-white.png" alt="Github Link"></a>
+            <a href="https://www.linkedin.com/in/matei-adeodatus/" target=_blank id="profile-link"><img
+                    src="/resources/linkedIn.png" alt="LinkedIn Link"></a>
+            <a href="https://www.freecodecamp.org/Matei-A" target=_blank id="profile-link"><img
+                    src="/resources/freecodecamp.png" alt="freecodeCamp Link"></a>
+        </div>
+    </footer>
+
 </body>
 
 </html>
