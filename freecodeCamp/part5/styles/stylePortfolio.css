@@ -1,0 +1,102 @@
+:root {
+    --header-height: 75px;
+    --color-white: rgb(230, 230, 200);
+    --color-red: rgb(177, 67, 77);
+    --color-blue: rgb(70, 100, 140);
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    background: linear-gradient(180deg, rgb(65, 65, 65), rgb(44, 44, 50));
+    font-family: "Poppins", Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    width:100%;
+}
+
+header {
+    position: fixed;
+    width: 100vw;
+    height: var(--header-height);
+    background-color: var(--color-red);
+    box-shadow: 0px 2px 1px 1px rgb(58, 58, 58);
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 2rem;
+    height: max-content;
+    align-self: center;
+    padding: 1.2rem;
+}
+
+.nav a:hover {
+    background: var(--color-blue);
+}
+
+main {
+    position: relative;
+    top: var(--header-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:var(--header-height)
+}
+
+#welcome-section{
+    height: calc(99vh - var(--header-height));
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+#welcome-section h1 {
+    font-size: 60px;
+    color: var(--color-white);
+}
+
+img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+
+
+
+
+footer {
+    border-top: 1px solid black;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: var(--header-height);
+    text-align: center;
+}
+
+footer div{
+
+}
