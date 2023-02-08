@@ -12,7 +12,7 @@
 }
 
 html {
-    background: linear-gradient(180deg, rgb(65, 65, 65), rgb(44, 44, 50));
+    background: linear-gradient(62deg, rgb(60, 60, 60), rgb(30, 30, 35));
     font-family: "Poppins", Helvetica, sans-serif;
 }
 
@@ -45,7 +45,7 @@ header {
     font-size: 2rem;
     height: max-content;
     align-self: center;
-    padding: 0.7rem;
+    padding: 0.4rem 1rem;
 }
 
 .nav a:hover {
@@ -54,16 +54,14 @@ header {
 
 main {
     position: relative;
-    top: var(--header-height);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: var(--header-height)
 }
 
 #welcome-section {
-    height: calc(100vh - var(--header-height));
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -90,8 +88,8 @@ main {
 }
 
 #projects {
-    height: 100vh;
-    width: 100%;
+    width:100%;
+    padding:2rem;
     background: var(--color-blue);
 }
 
@@ -111,71 +109,97 @@ main {
     justify-content: center;
     align-items: center;
     gap: 32px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px 10px;
-    max-width: 1400px;
 }
 
-.project-title{
+.project-tile {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.project-title img {
-    width: 350px;
-    height: 350px;
+.project-tile img {
+    width: 325px;
+    height: 325px;
     object-fit: cover;
-
+    transition: 0.3s ease-out;
 }
 
-.project-title a {
+.project-tile a {
     text-decoration: none;
 }
 
-.code{
-    font-family: "Poppins", Helvetica, sans-serif;
-    color:var(--color-gray);
+.code {
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size:1rem;
+    color: var(--color-gray);
     transition: color 0.3s ease-out;
 }
 
-.project-title:hover .code{
-    color:rgb(192, 69, 39);
-    
+.project-tile:hover img{
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4), -2px -2px 4px 2px rgba(0, 0, 0, 0.4) ;
+    transform:scale(1.01);
 }
 
-.project-title p {
+.project-tile:hover .code {
+    color: rgb(192, 69, 39);
+}
+
+.project-tile p {
     text-align: center;
     color: var(--color-white);
     margin: 0;
     padding: 10px;
     background-color: var(--color-gray);
-
 }
 
+#links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: var(--color-gray);
+}
+
+#links h1{
+    color:var(--color-white);
+    font-size:4rem;
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width:600px) {
+    #links h1{
+        color:var(--color-white);
+        font-size:2rem;
+        margin-bottom: 3rem;
+    }
+}
 
 #links img {
-    width: 25px;
-    height: 25px;
+    width: 4rem;
+    height: 4rem;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     margin-top: -5px;
+    transition: ease-out 0.3s;
 }
 
-
-
-
+#links img:hover {
+    transform: scale(1.5);
+}
 
 footer {
-    border-top: 1px solid black;
+    border-top: 3px solid var(--color-red);
+    color:var(--color-white);
     position: relative;
     bottom: 0;
     left: 0;
     width: auto;
-    height: var(--header-height);
     text-align: center;
 }
-
-footer div {}
