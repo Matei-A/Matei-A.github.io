@@ -1,8 +1,9 @@
 :root {
-    --header-height: 75px;
-    --color-white: rgb(230, 230, 200);
-    --color-red: rgb(177, 67, 77);
+    --header-height: 60px;
+    --color-white: rgb(255, 255, 255);
+    --color-red: rgb(200, 70, 70);
     --color-blue: rgb(70, 100, 140);
+    --color-gray: rgb(44, 44, 44);
 }
 
 * {
@@ -15,9 +16,9 @@ html {
     font-family: "Poppins", Helvetica, sans-serif;
 }
 
-body{
-    margin:0;
-    width:100%;
+body {
+    margin: 0;
+    width: 100%;
 }
 
 header {
@@ -25,7 +26,7 @@ header {
     width: 100vw;
     height: var(--header-height);
     background-color: var(--color-red);
-    box-shadow: 0px 2px 1px 1px rgb(58, 58, 58);
+    box-shadow: 0px 1px 1px rgb(58, 58, 58);
     top: 0;
     left: 0;
     z-index: 10;
@@ -44,7 +45,7 @@ header {
     font-size: 2rem;
     height: max-content;
     align-self: center;
-    padding: 1.2rem;
+    padding: 0.7rem;
 }
 
 .nav a:hover {
@@ -58,23 +59,103 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom:var(--header-height)
+    margin-bottom: var(--header-height)
 }
 
-#welcome-section{
-    height: calc(99vh - var(--header-height));
+#welcome-section {
+    height: calc(100vh - var(--header-height));
     width: 100%;
-    text-align: center;
-    vertical-align: middle;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #welcome-section h1 {
     font-size: 60px;
     color: var(--color-white);
+    margin: 0;
 }
 
-img {
+#welcome-section p {
+    color: var(--color-red);
+    font-size: 2rem;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
+
+#welcome-section div {
+    height: var(--header-height);
+}
+
+#projects {
+    height: 100vh;
+    width: 100%;
+    background: var(--color-blue);
+}
+
+#projects h1 {
+    text-align: center;
+    font-size: 40px;
+    color: var(--color-white);
+    max-width: 1000px;
+    margin: 30px auto;
+    border-bottom: 1px solid white;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    max-width: 1400px;
+}
+
+.project-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-title img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+
+}
+
+.project-title a {
+    text-decoration: none;
+}
+
+.code{
+    font-family: "Poppins", Helvetica, sans-serif;
+    color:var(--color-gray);
+    transition: color 0.3s ease-out;
+}
+
+.project-title:hover .code{
+    color:rgb(192, 69, 39);
+    
+}
+
+.project-title p {
+    text-align: center;
+    color: var(--color-white);
+    margin: 0;
+    padding: 10px;
+    background-color: var(--color-gray);
+
+}
+
+
+#links img {
     width: 25px;
     height: 25px;
     margin-left: 10px;
@@ -97,6 +178,4 @@ footer {
     text-align: center;
 }
 
-footer div{
-
-}
+footer div {}
